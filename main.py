@@ -16,7 +16,7 @@ PROXIES = {
 def login(username: str, password: str) -> (str, requests.session):
     headers = {
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/83.0.4103.116 Safari/537.36",
+                      "Chrome/80.0.3987.162 Safari/537.36",
         "origin": "https://www.euserv.com"
     }
     login_data = {
@@ -42,7 +42,7 @@ def get_servers(sess_id: str, session: requests.session) -> {}:
     url = "https://support.euserv.com/index.iphp?sess_id=" + sess_id
     headers = {
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/83.0.4103.116 Safari/537.36",
+                      "Chrome/80.0.3987.162 Safari/537.36",
         "origin": "https://www.euserv.com"
     }
     f = session.get(url=url, headers=headers)
@@ -62,7 +62,7 @@ def renew(sess_id: str, session: requests.session, password: str, order_id: str)
     url = "https://support.euserv.com/index.iphp"
     headers = {
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/83.0.4103.116 Safari/537.36",
+                      "Chrome/80.0.3987.162 Safari/537.36",
         "Host": "support.euserv.com",
         "origin": "https://support.euserv.com",
         "Referer": "https://support.euserv.com/index.iphp"
@@ -111,7 +111,7 @@ def check(sess_id: str, session: requests.session):
 
 
 def notify_user(token: str, msg: str):
-    rs = requests.post(url="https://sre24.com/api/v1/push", json=dict(token=token, msg=msg)).json()
+    rs = requests.post(url="https://127.0.0.1/api/v1/push", json=dict(token=token, msg=msg)).json()
     assert int(rs["code"] / 100) == 2, rs
 
 
